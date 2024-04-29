@@ -25,20 +25,27 @@ G2G3Plot.set_ylabel('Grade 3')
 
 #boxplots for address scores(G1, G2, G3)
 addressScores1 = sns.boxplot(data=df, x='address', y='G1').set(title='Semester 1')	#G1 plot
-plt.show()
+#plt.show()
 
 addressScores2 = sns.boxplot(data=df, x='address', y='G2').set(title='Semester 2')	#G2 plot
-plt.show()
+#plt.show()
 
 addressScores3 = sns.boxplot(data=df, x='address', y='G3').set(title='Final Grade')	#G1 plot
-plt.show()
+#plt.show()
 
 MeduPlot = sns.boxplot(data = df, x = 'G3', y = 'Medu', orient = 'h')
 MeduPlot.set_xlabel('Grade 3')
 MeduPlot.set_ylabel('Mother\'s Education')
-plt.show()
+# plt.show()
 
 FeduPlot = sns.boxplot(data = df, x = 'G3', y = 'Fedu', orient = 'h')
 FeduPlot.set_xlabel('Grade 3')
 FeduPlot.set_ylabel('Father\'s Education')
+# plt.show()
+
+#create new column with average of two parents' edu level & box plot
+df['parentAvgEdu'] = (df['Medu'] + df['Fedu']) / 2
+ParentEdu = sns.boxplot(data=df, x='G3', y='parentAvgEdu', orient='h')
+ParentEdu.set_xlabel('Grade 3')
+ParentEdu.set_ylabel('Average Parent Education')
 plt.show()
